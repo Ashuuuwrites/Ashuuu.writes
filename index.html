@@ -1,0 +1,684 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Ashutosh Singh (@ashuuu.writes) — Cinematic Video Editor</title>
+  <meta name="description" content="Official portfolio of Ashutosh Singh (ashuuu.writes). Professional video editor & colorist working with Netflix, T-Series, Zee Music & top influencers.">
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      font-family: "Inter", sans-serif;
+      background: #040406;
+      color: #fff;
+      overflow-x: hidden;
+      position: relative;
+    }
+
+    a {
+      color: inherit;
+      text-decoration: none;
+    }
+
+    .container {
+      width: min(1120px, 90%);
+      margin: auto;
+    }
+
+    /* NAVIGATION */
+    nav {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      z-index: 100;
+      background: rgba(4, 4, 6, 0.78);
+      backdrop-filter: blur(16px);
+      -webkit-backdrop-filter: blur(16px);
+      border-bottom: 1px solid rgba(255, 255, 255, 0.07);
+    }
+
+    .nav-inner {
+      height: 76px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+
+    .brand {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      font-size: 20px;
+      font-weight: 800;
+      letter-spacing: -0.5px;
+    }
+
+    .brand-icon {
+      width: 36px;
+      height: 36px;
+      border-radius: 50%;
+      background: linear-gradient(135deg, #ff3366, #7928ca);
+      display: grid;
+      place-items: center;
+      font-weight: 800;
+      color: #fff;
+      box-shadow: 0 0 20px rgba(255, 51, 102, 0.3);
+    }
+
+    .nav-links {
+      display: flex;
+      gap: 24px;
+      align-items: center;
+      color: #a1a1aa;
+      font-size: 14px;
+      font-weight: 500;
+    }
+
+    .nav-links a:hover {
+      color: #fff;
+    }
+
+    .nav-btn {
+      padding: 10px 20px;
+      border-radius: 100px;
+      background: linear-gradient(135deg, #ff3366, #7928ca);
+      color: #fff;
+      font-weight: 700;
+      transition: 0.25s;
+    }
+
+    .nav-btn:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 0 20px rgba(255, 51, 102, 0.4);
+    }
+
+    /* HERO SECTION */
+    .hero {
+      min-height: 95vh;
+      display: flex;
+      align-items: center;
+      position: relative;
+      padding-top: 90px;
+      overflow: hidden;
+    }
+
+    .hero-glow {
+      position: absolute;
+      width: 600px;
+      height: 600px;
+      border-radius: 50%;
+      background: radial-gradient(circle, rgba(121, 40, 202, 0.18), transparent 70%);
+      top: 10%;
+      left: 50%;
+      transform: translateX(-50%);
+      pointer-events: none;
+    }
+
+    .hero-grid {
+      display: grid;
+      grid-template-columns: 1.2fr 0.8fr;
+      align-items: center;
+      gap: 50px;
+      position: relative;
+      z-index: 2;
+    }
+
+    .hero-text .badge {
+      display: inline-flex;
+      padding: 6px 14px;
+      background: rgba(255, 51, 102, 0.1);
+      border: 1px solid rgba(255, 51, 102, 0.3);
+      border-radius: 100px;
+      color: #ff6685;
+      font-size: 12.5px;
+      font-weight: 700;
+      margin-bottom: 22px;
+      letter-spacing: 0.5px;
+    }
+
+    .hero-text h1 {
+      font-size: clamp(40px, 6vw, 68px);
+      line-height: 1.05;
+      font-weight: 800;
+      letter-spacing: -2px;
+      margin-bottom: 18px;
+    }
+
+    .hero-text h1 span {
+      background: linear-gradient(135deg, #ff3366, #c084fc, #38bdf8);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
+
+    .hero-text p {
+      color: #a1a1aa;
+      font-size: 16px;
+      line-height: 1.7;
+      margin-bottom: 30px;
+      max-width: 520px;
+    }
+
+    .hero-buttons {
+      display: flex;
+      gap: 14px;
+      flex-wrap: wrap;
+    }
+
+    .btn-primary {
+      padding: 14px 26px;
+      border-radius: 100px;
+      background: #fff;
+      color: #040406;
+      font-weight: 700;
+      transition: 0.25s;
+    }
+
+    .btn-primary:hover {
+      transform: translateY(-2px);
+      background: #f4f4f5;
+    }
+
+    .btn-secondary {
+      padding: 14px 26px;
+      border-radius: 100px;
+      background: rgba(255, 255, 255, 0.05);
+      border: 1px solid rgba(255, 255, 255, 0.12);
+      color: #fff;
+      font-weight: 600;
+      transition: 0.25s;
+    }
+
+    .btn-secondary:hover {
+      background: rgba(255, 255, 255, 0.1);
+    }
+
+    .hero-avatar-box {
+      display: flex;
+      justify-content: center;
+      position: relative;
+    }
+
+    .avatar-frame {
+      width: 280px;
+      height: 280px;
+      border-radius: 30px;
+      overflow: hidden;
+      border: 2px solid rgba(255, 255, 255, 0.15);
+      box-shadow: 0 20px 50px rgba(0, 0, 0, 0.8), 0 0 30px rgba(121, 40, 202, 0.3);
+      position: relative;
+    }
+
+    .avatar-frame img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+
+    /* BRANDS BANNER */
+    .brands-section {
+      padding: 40px 0 80px;
+      border-bottom: 1px solid rgba(255, 255, 255, 0.06);
+    }
+
+    .brands-title {
+      text-align: center;
+      font-size: 12px;
+      text-transform: uppercase;
+      letter-spacing: 2px;
+      color: #71717a;
+      margin-bottom: 24px;
+      font-weight: 700;
+    }
+
+    .brands-grid {
+      display: flex;
+      justify-content: center;
+      gap: 40px;
+      flex-wrap: wrap;
+      opacity: 0.75;
+    }
+
+    .brand-logo {
+      font-size: 18px;
+      font-weight: 800;
+      letter-spacing: 1px;
+      color: #d4d4d8;
+    }
+
+    /* SECTIONS COMMON */
+    section {
+      padding: 90px 0;
+    }
+
+    .section-header {
+      text-align: center;
+      margin-bottom: 50px;
+    }
+
+    .section-header span {
+      color: #ff3366;
+      font-size: 12px;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 2px;
+    }
+
+    .section-header h2 {
+      font-size: clamp(32px, 4vw, 44px);
+      font-weight: 800;
+      margin-top: 10px;
+      letter-spacing: -1px;
+    }
+
+    /* VIRAL STATS / BLOCKBUSTER REELS */
+    .viral-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 20px;
+    }
+
+    .viral-card {
+      border-radius: 20px;
+      overflow: hidden;
+      border: 1px solid rgba(255, 255, 255, 0.08);
+      background: #0d0d12;
+      transition: 0.3s;
+      position: relative;
+    }
+
+    .viral-card:hover {
+      transform: translateY(-6px);
+      border-color: rgba(255, 51, 102, 0.4);
+      box-shadow: 0 15px 30px rgba(0, 0, 0, 0.6);
+    }
+
+    .viral-thumb {
+      height: 320px;
+      position: relative;
+    }
+
+    .viral-thumb img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+
+    .views-badge {
+      position: absolute;
+      top: 14px;
+      right: 14px;
+      background: rgba(0, 0, 0, 0.7);
+      backdrop-filter: blur(8px);
+      padding: 6px 12px;
+      border-radius: 100px;
+      font-size: 12px;
+      font-weight: 700;
+      color: #38bdf8;
+      border: 1px solid rgba(56, 189, 248, 0.3);
+    }
+
+    .viral-info {
+      padding: 20px;
+      background: #09090d;
+    }
+
+    .viral-info h3 {
+      font-size: 17px;
+      font-weight: 700;
+      margin-bottom: 6px;
+    }
+
+    .viral-info p {
+      color: #71717a;
+      font-size: 13px;
+    }
+
+    /* TESTIMONIALS / FAN COMMENTS */
+    .comments-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 20px;
+    }
+
+    .comment-card {
+      padding: 24px;
+      border-radius: 20px;
+      background: rgba(255, 255, 255, 0.025);
+      border: 1px solid rgba(255, 255, 255, 0.07);
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+    }
+
+    .comment-stars {
+      color: #f59e0b;
+      font-size: 14px;
+      margin-bottom: 14px;
+    }
+
+    .comment-text {
+      color: #e4e4e7;
+      font-size: 14px;
+      line-height: 1.6;
+      margin-bottom: 20px;
+      font-style: italic;
+    }
+
+    .comment-author {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+
+    .author-avatar {
+      width: 38px;
+      height: 38px;
+      border-radius: 50%;
+      background: linear-gradient(135deg, #7928ca, #ff3366);
+      display: grid;
+      place-items: center;
+      font-weight: 700;
+      font-size: 14px;
+    }
+
+    .author-meta h4 {
+      font-size: 13.5px;
+      font-weight: 700;
+    }
+
+    .author-meta span {
+      font-size: 11px;
+      color: #71717a;
+    }
+
+    /* CONTACT / CTA SECTION */
+    .contact-box {
+      padding: 70px 40px;
+      border-radius: 30px;
+      background: radial-gradient(circle at 50% 0%, rgba(255, 51, 102, 0.15), transparent 60%), #0a0a0f;
+      border: 1px solid rgba(255, 255, 255, 0.08);
+      text-align: center;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .contact-box h2 {
+      font-size: clamp(30px, 5vw, 48px);
+      font-weight: 800;
+      letter-spacing: -1.5px;
+      margin-bottom: 14px;
+    }
+
+    .contact-box p {
+      color: #a1a1aa;
+      font-size: 16px;
+      max-width: 500px;
+      margin: 0 auto 30px;
+      line-height: 1.6;
+    }
+
+    .contact-actions {
+      display: flex;
+      justify-content: center;
+      gap: 16px;
+      flex-wrap: wrap;
+    }
+
+    .btn-ig {
+      padding: 14px 28px;
+      border-radius: 100px;
+      background: linear-gradient(135deg, #833ab4, #fd1d1d, #fcb045);
+      color: #fff;
+      font-weight: 700;
+      transition: 0.25s;
+    }
+
+    .btn-ig:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 0 25px rgba(253, 29, 29, 0.4);
+    }
+
+    .btn-mail {
+      padding: 14px 28px;
+      border-radius: 100px;
+      background: rgba(255, 255, 255, 0.08);
+      border: 1px solid rgba(255, 255, 255, 0.15);
+      color: #fff;
+      font-weight: 700;
+      transition: 0.25s;
+    }
+
+    .btn-mail:hover {
+      background: rgba(255, 255, 255, 0.15);
+    }
+
+    /* FOOTER */
+    footer {
+      padding: 40px 0;
+      border-top: 1px solid rgba(255, 255, 255, 0.06);
+      text-align: center;
+      color: #71717a;
+      font-size: 13px;
+    }
+
+    footer strong {
+      color: #fff;
+    }
+
+    /* RESPONSIVE */
+    @media (max-width: 900px) {
+      .hero-grid {
+        grid-template-columns: 1fr;
+        text-align: center;
+        gap: 40px;
+      }
+      .hero-text p {
+        margin: 0 auto 30px;
+      }
+      .hero-buttons {
+        justify-content: center;
+      }
+      .viral-grid, .comments-grid {
+        grid-template-columns: 1fr;
+      }
+    }
+  </style>
+</head>
+
+<body>
+
+  <!-- NAVIGATION -->
+  <nav>
+    <div class="container nav-inner">
+      <a href="#" class="brand">
+        <div class="brand-icon">A</div>
+        <span>Ashutosh Singh</span>
+      </a>
+      <div class="nav-links">
+        <a href="#work">Portfolio</a>
+        <a href="#reviews">Testimonials</a>
+        <a href="https://instagram.com/ashuuu.writes" target="_blank" class="nav-btn">Instagram DM</a>
+      </div>
+    </div>
+  </nav>
+
+  <!-- HERO -->
+  <header class="hero">
+    <div class="hero-glow"></div>
+    <div class="container hero-grid">
+      <div class="hero-text">
+        <div class="badge">✦ Professional Cinematic Video Editor</div>
+        <h1>Turning raw clips into <span>Blockbuster Visuals.</span></h1>
+        <p>Hi, I am <strong>Ashutosh Singh</strong> (<span style="color:#ff6685;">@ashuuu.writes</span>). I specialize in high-retention cinematic edits, color grading, and viral storytelling trusted by major music labels and top creators.</p>
+        <div class="hero-buttons">
+          <a href="https://instagram.com/ashuuu.writes" target="_blank" class="btn-primary">Hire For Paid Edits →</a>
+          <a href="mailto:ashuuuwrites01@gmail.com" class="btn-secondary">Collaborate via Email</a>
+        </div>
+      </div>
+      <div class="hero-avatar-box">
+        <div class="avatar-frame">
+          <!-- User provided profile photo -->
+          <img src="1000435956.jpg" alt="Ashutosh Singh">
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <!-- BRANDS BANNER -->
+  <div class="brands-section">
+    <div class="container">
+      <div class="brands-title">Trusted Work Experience & Collaborations</div>
+      <div class="brands-grid">
+        <div class="brand-logo">NETFLIX</div>
+        <div class="brand-logo">T-SERIES</div>
+        <div class="brand-logo">ZEE MUSIC</div>
+        <div class="brand-logo">AMAZON PRIME</div>
+        <div class="brand-logo">TOP INSTAGRAM INFLUENCERS</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- VIRAL STATS / BLOCKBUSTER REELS -->
+  <section id="work">
+    <div class="container">
+      <div class="section-header">
+        <span>Proven Track Record</span>
+        <h2>Blockbuster Reels & Million+ Views</h2>
+        <p>Here are some of my top-performing edits that crossed millions of views and engagement on Instagram.</p>
+      </div>
+
+      <div class="viral-grid">
+        <!-- Reel 1: 15.6M -->
+        <div class="viral-card">
+          <div class="viral-thumb">
+            <div class="views-badge">👁️ 15.6M Views</div>
+            <!-- User provided viral reel screenshot -->
+            <img src="1000441059.jpg" alt="Viral Edit 15.6M">
+          </div>
+          <div class="viral-info">
+            <h3>Cinematic Romance Edit</h3>
+            <p>Masterpiece grade & emotional rhythm flow</p>
+          </div>
+        </div>
+
+        <!-- Reel 2: 1.9M -->
+        <div class="viral-card">
+          <div class="viral-thumb">
+            <div class="views-badge">👁️ 1.9M Views</div>
+            <img src="1000441059.jpg" alt="Viral Edit 1.9M" style="object-position: center;">
+          </div>
+          <div class="viral-info">
+            <h3>Vibes & Aesthetic Motion</h3>
+            <p>High retention storytelling & seamless cuts</p>
+          </div>
+        </div>
+
+        <!-- Reel 3: 1.6M -->
+        <div class="viral-card">
+          <div class="viral-thumb">
+            <div class="views-badge">👁️ 1.6M Views</div>
+            <img src="1000441059.jpg" alt="Viral Edit 1.6M" style="object-position: right;">
+          </div>
+          <div class="viral-info">
+            <h3>Nostalgic Cinema Cut</h3>
+            <p>Professional color grading & audio syncing</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- TESTIMONIALS / FAN COMMENTS -->
+  <section id="reviews" style="background: rgba(255,255,255,0.01);">
+    <div class="container">
+      <div class="section-header">
+        <span>Audience Reaction</span>
+        <h2>Loved By Millions & Creators</h2>
+        <p>Real feedback and appreciation from the community and fellow editors on my edits.</p>
+      </div>
+
+      <div class="comments-grid">
+        <div class="comment-card">
+          <div>
+            <div class="comment-stars">★★★★★</div>
+            <p class="comment-text">"Pehchan lungi main Hazaron, laakhon, croron mein pehchan lungi tumhari edit @ashuuu.writes_ 🔥🙌"</p>
+          </div>
+          <div class="comment-author">
+            <div class="author-avatar">F</div>
+            <div class="author-meta">
+              <h4>film_x_editzzz</h4>
+              <span>Verified Creator</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="comment-card">
+          <div>
+            <div class="comment-stars">★★★★★</div>
+            <p class="comment-text">"1 million likes @ashuuu.writes_ keep growing bhai ❤️"</p>
+          </div>
+          <div class="comment-author">
+            <div class="author-avatar">I</div>
+            <div class="author-meta">
+              <h4>ishivtripathi</h4>
+              <span>Community Peer</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="comment-card">
+          <div>
+            <div class="comment-stars">★★★★★</div>
+            <p class="comment-text">"Bhai best edit ever seen yrr hats off to your work bhai 🔥🔥🔥🔥🙌🙌"</p>
+          </div>
+          <div class="comment-author">
+            <div class="author-avatar">A</div>
+            <div class="author-meta">
+              <h4>ii_.aryxn</h4>
+              <span>Video Editor</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CONTACT CTA -->
+  <section>
+    <div class="container">
+      <div class="contact-box">
+        <h2>Ready to make your next reel go viral?</h2>
+        <p>Open for paid video editing, brand collaborations, and promotional editing work. Drop a message directly!</p>
+        <div class="contact-actions">
+          <a href="https://instagram.com/ashuuu.writes" target="_blank" class="btn-ig">DM on Instagram (@ashuuu.writes)</a>
+          <a href="mailto:ashuuuwrites01@gmail.com" class="btn-mail">Send Email (ashuuuwrites01@gmail.com)</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer>
+    <div class="container">
+      <p>© 2026 <strong>Ashutosh Singh</strong> (@ashuuu.writes). All rights reserved.</p>
+      <p style="margin-top: 6px; font-size: 11px;">Powered by Webora Architecture</p>
+    </div>
+  </footer>
+
+</body>
+</html>

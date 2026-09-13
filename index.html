@@ -39,6 +39,43 @@
       margin: auto;
     }
 
+    /* CINEMATIC LETTERBOX CURTAIN INTRO */
+    .cinema-bar-top, .cinema-bar-bottom {
+      position: fixed;
+      left: 0;
+      width: 100%;
+      height: 35px;
+      background: #000;
+      z-index: 999;
+      pointer-events: none;
+      transition: transform 1s cubic-bezier(0.77, 0, 0.175, 1);
+    }
+    .cinema-bar-top { top: 0; transform: translateY(0); }
+    .cinema-bar-bottom { bottom: 0; transform: translateY(0); }
+
+    body.loaded .cinema-bar-top { transform: translateY(-100%); }
+    body.loaded .cinema-bar-bottom { transform: translateY(100%); }
+
+    /* FLOATING ATMOSPHERIC DUST PARTICLES */
+    .dust-particles {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      pointer-events: none;
+      z-index: 1;
+      background-image: radial-gradient(circle, rgba(255,255,255,0.15) 1px, transparent 1px);
+      background-size: 80px 80px;
+      opacity: 0.25;
+      animation: floatDust 20s linear infinite;
+    }
+
+    @keyframes floatDust {
+      0% { background-position: 0 0; }
+      100% { background-position: 100px 100px; }
+    }
+
     /* NAVIGATION WITH TIMECODE HUD */
     nav {
       position: fixed;
@@ -58,6 +95,8 @@
       align-items: center;
       justify-content: space-between;
       gap: 10px;
+      position: relative;
+      z-index: 2;
     }
 
     .brand {
@@ -139,6 +178,7 @@
       padding-top: 110px;
       padding-bottom: 30px;
       overflow: hidden;
+      z-index: 2;
     }
 
     .hero-glow {
@@ -261,6 +301,8 @@
       justify-content: center;
       align-items: center;
       gap: 30px;
+      position: relative;
+      z-index: 2;
     }
 
     .soundwave-label {
@@ -302,6 +344,8 @@
     /* SHINING STATS BAR */
     .stats-bar {
       padding: 30px 0;
+      position: relative;
+      z-index: 2;
     }
 
     .stats-box {
@@ -338,6 +382,8 @@
     .brands-section {
       padding: 35px 0 50px;
       border-bottom: 1px solid rgba(255, 255, 255, 0.06);
+      position: relative;
+      z-index: 2;
     }
 
     .brands-title {
@@ -393,6 +439,8 @@
     /* SECTIONS COMMON */
     section {
       padding: 60px 0;
+      position: relative;
+      z-index: 2;
     }
 
     .section-header {
@@ -421,7 +469,7 @@
       margin-top: 6px;
     }
 
-    /* 3D HOLOGRAPHIC VIRAL CARDS */
+    /* 3D HOLOGRAPHIC VIRAL CARDS & RGB GLITCH HOVER */
     .viral-grid {
       display: grid;
       grid-template-columns: repeat(3, 1fr);
@@ -457,11 +505,13 @@
       width: 100%;
       height: 100%;
       object-fit: contain;
-      transition: transform 0.5s ease;
+      transition: transform 0.5s ease, filter 0.3s ease;
     }
 
+    /* RGB Chromatic Glitch Effect on Hover */
     .viral-card:hover .viral-thumb img {
       transform: scale(1.04);
+      filter: drop-shadow(2px -2px 0px rgba(255,0,85,0.7)) drop-shadow(-2px 2px 0px rgba(0,210,255,0.7));
     }
 
     .grade-tag {
@@ -652,6 +702,8 @@
       text-align: center;
       color: #71717a;
       font-size: 12px;
+      position: relative;
+      z-index: 2;
     }
 
     footer strong {
@@ -713,6 +765,13 @@
 
 <body>
 
+  <!-- CINEMATIC LETTERBOX CURTAIN INTRO -->
+  <div class="cinema-bar-top"></div>
+  <div class="cinema-bar-bottom"></div>
+
+  <!-- ATMOSPHERIC DUST PARTICLES OVERLAY -->
+  <div class="dust-particles"></div>
+
   <!-- NAVIGATION WITH TIMECODE HUD -->
   <nav>
     <div class="container nav-inner">
@@ -720,7 +779,7 @@
         <div class="brand-icon">A</div>
         <span>Ashutosh Singh</span>
       </a>
-      <div class="hud-clock">[ TC 01:24:58:12 • 4K UHD ]</div>
+      <div class="hud-clock" id="hudTime">[ TC 01:24:58:12 • 4K UHD ]</div>
       <div class="nav-links">
         <a href="#work">Portfolio</a>
         <a href="#reviews">Testimonials</a>
@@ -922,8 +981,45 @@
     </div>
   </footer>
 
-  <!-- ADVANCED SCROLL REVEAL SCRIPT -->
+  <!-- ADVANCED ANIMATIONS & SCRIPTS -->
   <script>
+    // 1. Theater Curtain Open Effect on Load
+    window.addEventListener("load", function() {
+      setTimeout(() => {
+        document.body.classList.add("loaded");
+      }, 300);
+    });
+
+    // 2. Live Running Timecode Clock Simulation
+    let frame = 12;
+    let sec = 58;
+    let min = 24;
+    let hr = 1;
+    setInterval(() => {
+      frame++;
+      if (frame > 23) {
+        frame = 0;
+        sec++;
+        if (sec > 59) {
+          sec = 0;
+          min++;
+          if (min > 59) {
+            min = 0;
+            hr++;
+          }
+        }
+      }
+      let fStr = String(frame).padStart(2, '0');
+      let sStr = String(sec).padStart(2, '0');
+      let mStr = String(min).padStart(2, '0');
+      let hStr = String(hr).padStart(2, '0');
+      const clockEl = document.getElementById("hudTime");
+      if(clockEl) {
+        clockEl.innerText = `[ TC ${hStr}:${mStr}:${sStr}:${fStr} • 4K UHD ]`;
+      }
+    }, 41.67); // roughly 24 frames per second
+
+    // 3. Scroll Reveal Observer
     document.addEventListener("DOMContentLoaded", function() {
       const reveals = document.querySelectorAll(".reveal");
 
@@ -940,7 +1036,7 @@
       }
 
       window.addEventListener("scroll", revealOnScroll);
-      revealOnScroll(); // Trigger on load
+      revealOnScroll();
     });
   </script>
 

@@ -295,7 +295,7 @@
       margin-top: 6px;
     }
 
-    /* VIRAL STATS - FIXED HEIGHT FOR FULL SCREENSHOT VISIBILITY */
+    /* GRID FOR POSTERS & VIDEOS */
     .viral-grid {
       display: grid;
       grid-template-columns: repeat(3, 1fr);
@@ -310,7 +310,7 @@
     }
 
     .viral-thumb {
-      height: 480px; /* Increased height to display full vertical screenshots perfectly */
+      height: 480px;
       position: relative;
       background: #000;
       display: flex;
@@ -321,7 +321,13 @@
     .viral-thumb img {
       width: 100%;
       height: 100%;
-      object-fit: contain; /* Ensures the entire image fits without cutting off edges */
+      object-fit: contain;
+    }
+
+    .viral-thumb video {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
     }
 
     .views-badge {
@@ -507,7 +513,7 @@
         grid-template-columns: 1fr;
       }
       .viral-thumb {
-        height: 520px; /* Perfect height for phones so full screenshots display clearly */
+        height: 520px;
       }
       .brands-grid {
         gap: 20px;
@@ -526,7 +532,8 @@
         <span>Ashutosh Singh</span>
       </a>
       <div class="nav-links">
-        <a href="#work">Portfolio</a>
+        <a href="#posters">Posters</a>
+        <a href="#videos">Demos</a>
         <a href="#reviews">Testimonials</a>
         <a href="https://instagram.com/ashuuu.writes" target="_blank" class="nav-btn">Instagram DM</a>
       </div>
@@ -568,17 +575,17 @@
     </div>
   </div>
 
-  <!-- VIRAL STATS -->
-  <section id="work">
+  <!-- SECTION 1: MILLION VIEWS POSTERS -->
+  <section id="posters">
     <div class="container">
       <div class="section-header">
         <span>Proven Track Record</span>
         <h2>Blockbuster Reels & Million+ Views</h2>
-        <p>Here are some of my top-performing edits that crossed millions of views and engagement.</p>
+        <p>Top-performing edits that crossed millions of views and viral engagement.</p>
       </div>
 
       <div class="viral-grid">
-        <!-- Reel 1: 15.6M -->
+        <!-- Poster 1 -->
         <div class="viral-card">
           <div class="viral-thumb">
             <div class="views-badge">👁️ 15.6M Views</div>
@@ -590,7 +597,7 @@
           </div>
         </div>
 
-        <!-- Reel 2: 1.9M -->
+        <!-- Poster 2 -->
         <div class="viral-card">
           <div class="viral-thumb">
             <div class="views-badge">👁️ 1.9M Views</div>
@@ -602,7 +609,7 @@
           </div>
         </div>
 
-        <!-- Reel 3: 1.6M -->
+        <!-- Poster 3 -->
         <div class="viral-card">
           <div class="viral-thumb">
             <div class="views-badge">👁️ 1.6M Views</div>
@@ -617,8 +624,57 @@
     </div>
   </section>
 
+  <!-- SECTION 2: LIVE PLAYABLE VIDEOS -->
+  <section id="videos" style="background: rgba(255,255,255,0.01);">
+    <div class="container">
+      <div class="section-header">
+        <span>Interactive Showcase</span>
+        <h2>Live Video Demos (Play & Pause)</h2>
+        <p>Experience the actual editing quality and smooth transitions live.</p>
+      </div>
+
+      <div class="viral-grid">
+        <!-- Playable Video 1 -->
+        <div class="viral-card">
+          <div class="viral-thumb">
+            <div class="views-badge">▶️ Demo 1</div>
+            <video src="video1.mp4" controls playsinline></video>
+          </div>
+          <div class="viral-info">
+            <h3>Cinematic Flow Demo</h3>
+            <p>Interactive playback preview</p>
+          </div>
+        </div>
+
+        <!-- Playable Video 2 -->
+        <div class="viral-card">
+          <div class="viral-thumb">
+            <div class="views-badge">▶️ Demo 2</div>
+            <video src="video2.mp4" controls playsinline></video>
+          </div>
+          <div class="viral-info">
+            <h3>Aesthetic Motion Preview</h3>
+            <p>Interactive playback preview</p>
+          </div>
+        </div>
+
+        <!-- Playable Video 3 -->
+        <div class="viral-card">
+          <div class="viral-thumb">
+            <div class="views-badge">▶️ Demo 3</div>
+            <video src="video3.mp4" controls playsinline></video>
+          </div>
+          <div class="viral-info">
+            <h3>Color Grading Showcase</h3>
+            <p>Interactive playback preview</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
   <!-- TESTIMONIALS -->
-  <section id="reviews" style="background: rgba(255,255,255,0.01);">
+  <section id="reviews">
     <div class="container">
       <div class="section-header">
         <span>Audience Reaction</span>

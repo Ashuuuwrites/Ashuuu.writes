@@ -4,7 +4,7 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Ashutosh Singh (@ashuuu.writes) — Cinematic Video Editor</title>
-  <meta name="description" content="Official portfolio of Ashutosh Singh (ashuuu.writes). Professional video editor & colorist working with Netflix, T-Series, Zee Music & top influencers.">
+  <meta name="description" content="Official portfolio of Ashutosh Singh (ashuuu.writes). Professional video editor & colorist working with Netflix, Spotify, T-Series, Zee Music & top influencers.">
 
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -217,9 +217,9 @@
       object-fit: cover;
     }
 
-    /* REAL IMAGE LOGOS SECTION */
+    /* GLOWING BRAND LOGOS SECTION */
     .brands-section {
-      padding: 35px 0 55px;
+      padding: 40px 0 60px;
       border-bottom: 1px solid rgba(255, 255, 255, 0.06);
     }
 
@@ -229,7 +229,7 @@
       text-transform: uppercase;
       letter-spacing: 1.5px;
       color: #71717a;
-      margin-bottom: 24px;
+      margin-bottom: 28px;
       font-weight: 700;
     }
 
@@ -237,19 +237,41 @@
       display: flex;
       justify-content: center;
       align-items: center;
-      gap: 30px;
+      gap: 32px;
       flex-wrap: wrap;
     }
 
     .brand-logo-img {
-      height: 32px;
+      height: 44px;
       object-fit: contain;
-      opacity: 0.85;
-      transition: 0.3s;
+      mix-blend-mode: screen; /* Removes black background cleanly */
+      transition: 0.3s ease;
     }
 
-    .brand-logo-img:hover {
-      opacity: 1;
+    /* Specific Colored Neon Glows for each brand */
+    .glow-netflix:hover {
+      filter: drop-shadow(0 0 14px rgba(229, 9, 20, 0.9));
+      transform: scale(1.08);
+    }
+
+    .glow-spotify:hover {
+      filter: drop-shadow(0 0 14px rgba(30, 215, 96, 0.9));
+      transform: scale(1.08);
+    }
+
+    .glow-tseries:hover {
+      filter: drop-shadow(0 0 14px rgba(255, 51, 51, 0.9));
+      transform: scale(1.08);
+    }
+
+    .glow-amazon:hover {
+      filter: drop-shadow(0 0 14px rgba(0, 168, 225, 0.9));
+      transform: scale(1.08);
+    }
+
+    .glow-zeemusic:hover {
+      filter: drop-shadow(0 0 14px rgba(255, 75, 75, 0.9));
+      transform: scale(1.08);
     }
 
     .logo-influencers {
@@ -257,9 +279,15 @@
       font-size: 13px;
       font-weight: 700;
       background: rgba(255, 51, 102, 0.1);
-      padding: 7px 16px;
+      padding: 9px 18px;
       border-radius: 100px;
       border: 1px solid rgba(255, 51, 102, 0.3);
+      transition: 0.3s;
+    }
+
+    .logo-influencers:hover {
+      box-shadow: 0 0 14px rgba(255, 51, 102, 0.6);
+      transform: scale(1.05);
     }
 
     /* SECTIONS COMMON */
@@ -508,10 +536,10 @@
         height: 520px;
       }
       .brands-grid {
-        gap: 16px;
+        gap: 18px;
       }
       .brand-logo-img {
-        height: 26px;
+        height: 36px;
       }
     }
   </style>
@@ -555,15 +583,16 @@
     </div>
   </header>
 
-  <!-- REAL IMAGE LOGOS SECTION -->
+  <!-- GLOWING BRAND LOGOS SECTION (Sequence: Netflix -> Spotify -> T-Series -> Amazon -> Zee Music -> Influencers) -->
   <div class="brands-section">
     <div class="container">
       <div class="brands-title">Trusted Work Experience & Collaborations</div>
       <div class="brands-grid">
-        <img src="netflix.jpg" alt="Netflix" class="brand-logo-img">
-        <img src="tseries.jpg" alt="T-Series" class="brand-logo-img">
-        <img src="zeemusic.jpg" alt="Zee Music" class="brand-logo-img">
-        <img src="amazon.jpg" alt="Amazon Prime" class="brand-logo-img">
+        <img src="netflix.jpg" alt="Netflix" class="brand-logo-img glow-netflix">
+        <img src="spotify.jpg" alt="Spotify" class="brand-logo-img glow-spotify">
+        <img src="tseries.jpg" alt="T-Series" class="brand-logo-img glow-tseries">
+        <img src="amazon.jpg" alt="Amazon Prime" class="brand-logo-img glow-amazon">
+        <img src="zeemusic.jpg" alt="Zee Music" class="brand-logo-img glow-zeemusic">
         <div class="logo-influencers">⚡ Top Instagram Influencers</div>
       </div>
     </div>

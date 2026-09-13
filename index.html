@@ -118,6 +118,18 @@
       white-space: nowrap;
     }
 
+    /* ADVANCED SCROLL REVEAL ANIMATIONS */
+    .reveal {
+      opacity: 0;
+      transform: translateY(30px);
+      transition: opacity 0.8s ease, transform 0.8s ease;
+    }
+
+    .reveal.active {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
     /* HERO SECTION */
     .hero {
       min-height: 80vh;
@@ -229,7 +241,7 @@
     }
 
     .avatar-frame:hover {
-      transform: perspective(1000px) rotateY(-5deg) rotateX(5deg);
+      transform: perspective(1000px) rotateY(-6deg) rotateX(6deg) scale(1.02);
       box-shadow: 0 25px 50px rgba(0,0,0,0.9), 0 0 35px rgba(255, 51, 102, 0.4);
     }
 
@@ -287,7 +299,7 @@
       100% { transform: scaleY(1.2); }
     }
 
-    /* IPHONE-STYLE SHINING STATS BAR */
+    /* SHINING STATS BAR */
     .stats-bar {
       padding: 30px 0;
     }
@@ -409,7 +421,7 @@
       margin-top: 6px;
     }
 
-    /* 3D HOLOGRAPHIC VIRAL CARDS & BEFORE/AFTER SLIDER */
+    /* 3D HOLOGRAPHIC VIRAL CARDS */
     .viral-grid {
       display: grid;
       grid-template-columns: repeat(3, 1fr);
@@ -421,14 +433,14 @@
       overflow: hidden;
       border: 1px solid rgba(255, 255, 255, 0.08);
       background: #0d0d12;
-      transition: 0.4s ease;
+      transition: transform 0.4s ease, box-shadow 0.4s ease, border-color 0.4s ease;
       box-shadow: 0 10px 30px rgba(0,0,0,0.5);
     }
 
     .viral-card:hover {
-      transform: translateY(-6px);
-      border-color: rgba(255, 51, 102, 0.4);
-      box-shadow: 0 20px 40px rgba(0, 0, 0, 0.8), 0 0 25px rgba(255, 51, 102, 0.2);
+      transform: translateY(-8px) scale(1.01);
+      border-color: rgba(255, 51, 102, 0.5);
+      box-shadow: 0 25px 50px rgba(0, 0, 0, 0.9), 0 0 30px rgba(255, 51, 102, 0.3);
     }
 
     .viral-thumb {
@@ -445,9 +457,13 @@
       width: 100%;
       height: 100%;
       object-fit: contain;
+      transition: transform 0.5s ease;
     }
 
-    /* Interactive Color Grade Tag Label */
+    .viral-card:hover .viral-thumb img {
+      transform: scale(1.04);
+    }
+
     .grade-tag {
       position: absolute;
       bottom: 12px;
@@ -495,7 +511,7 @@
       font-size: 12px;
     }
 
-    /* TESTIMONIALS */
+    /* ANIMATED COMMENTS / TESTIMONIALS */
     .comments-grid {
       display: grid;
       grid-template-columns: repeat(3, 1fr);
@@ -503,19 +519,27 @@
     }
 
     .comment-card {
-      padding: 18px;
+      padding: 20px;
       border-radius: 16px;
       background: rgba(255, 255, 255, 0.025);
       border: 1px solid rgba(255, 255, 255, 0.07);
       display: flex;
       flex-direction: column;
       justify-content: space-between;
+      position: relative;
+      overflow: hidden;
+      animation: commentGlow 4s infinite alternate;
       transition: 0.3s;
     }
 
+    @keyframes commentGlow {
+      0% { border-color: rgba(255, 255, 255, 0.07); box-shadow: 0 0 0 rgba(255,51,102,0); }
+      100% { border-color: rgba(255, 51, 102, 0.3); box-shadow: 0 0 20px rgba(255,51,102,0.08); }
+    }
+
     .comment-card:hover {
+      transform: translateY(-5px);
       background: rgba(255, 255, 255, 0.04);
-      border-color: rgba(255, 255, 255, 0.15);
     }
 
     .comment-stars {
@@ -530,6 +554,12 @@
       line-height: 1.5;
       margin-bottom: 14px;
       font-style: italic;
+      animation: textSlideIn 0.8s ease-out;
+    }
+
+    @keyframes textSlideIn {
+      from { opacity: 0; transform: translateY(10px); }
+      to { opacity: 1; transform: translateY(0); }
     }
 
     .comment-author {
@@ -634,7 +664,7 @@
         font-size: 14px;
       }
       .hud-clock {
-        display: none; /* Hide HUD on very small screens for clean look */
+        display: none;
       }
       .nav-links {
         gap: 8px;
@@ -702,7 +732,7 @@
   <!-- HERO -->
   <header class="hero">
     <div class="hero-glow"></div>
-    <div class="container hero-grid">
+    <div class="container hero-grid reveal">
       <div class="hero-text">
         <div class="badge">✦ Professional Cinematic Video Editor & Colorist</div>
         <h1>Turning raw clips into <span>Blockbuster Visuals.</span></h1>
@@ -721,7 +751,7 @@
   </header>
 
   <!-- LIVE SOUNDWAVE EQUALIZER STRIP -->
-  <div class="soundwave-strip">
+  <div class="soundwave-strip reveal">
     <span class="soundwave-label">Audio Sync & Mastering</span>
     <div class="equalizer">
       <span></span><span></span><span></span><span></span><span></span><span></span><span></span>
@@ -730,7 +760,7 @@
   </div>
 
   <!-- SHINING STATS BAR -->
-  <div class="stats-bar">
+  <div class="stats-bar reveal">
     <div class="container">
       <div class="stats-box">
         <div class="stat-item">
@@ -750,7 +780,7 @@
   </div>
 
   <!-- GLOWING BRAND LOGOS SECTION -->
-  <div class="brands-section">
+  <div class="brands-section reveal">
     <div class="container">
       <div class="brands-title">Trusted Work Experience & Collaborations</div>
       <div class="brands-grid">
@@ -764,10 +794,10 @@
     </div>
   </div>
 
-  <!-- VIRAL STATS POSTERS WITH COLOR GRADE TAGS -->
+  <!-- VIRAL STATS POSTERS -->
   <section id="work">
     <div class="container">
-      <div class="section-header">
+      <div class="section-header reveal">
         <span>Proven Track Record</span>
         <h2>Blockbuster Reels & Million+ Views</h2>
         <p>Top-performing edits featuring professional color grading and high-retention cuts.</p>
@@ -775,7 +805,7 @@
 
       <div class="viral-grid">
         <!-- Reel 1: 15.6M -->
-        <div class="viral-card">
+        <div class="viral-card reveal">
           <div class="viral-thumb">
             <div class="grade-tag">GRADE: REC.709 / LUT V4</div>
             <div class="views-badge">👁️ 15.6M Views</div>
@@ -788,7 +818,7 @@
         </div>
 
         <!-- Reel 2: 1.9M -->
-        <div class="viral-card">
+        <div class="viral-card reveal">
           <div class="viral-thumb">
             <div class="grade-tag">GRADE: MOOD VIBE FX</div>
             <div class="views-badge">👁️ 1.9M Views</div>
@@ -801,7 +831,7 @@
         </div>
 
         <!-- Reel 3: 1.6M -->
-        <div class="viral-card">
+        <div class="viral-card reveal">
           <div class="viral-thumb">
             <div class="grade-tag">GRADE: NOSTALGIC FILM</div>
             <div class="views-badge">👁️ 1.6M Views</div>
@@ -816,17 +846,17 @@
     </div>
   </section>
 
-  <!-- TESTIMONIALS -->
+  <!-- ANIMATED TESTIMONIALS -->
   <section id="reviews" style="background: rgba(255,255,255,0.01);">
     <div class="container">
-      <div class="section-header">
+      <div class="section-header reveal">
         <span>Audience Reaction</span>
         <h2>Loved By Millions & Creators</h2>
         <p>Real feedback and appreciation from the community on my edits.</p>
       </div>
 
       <div class="comments-grid">
-        <div class="comment-card">
+        <div class="comment-card reveal">
           <div>
             <div class="comment-stars">★★★★★</div>
             <p class="comment-text">"Pehchan lungi main Hazaron, laakhon, croron mein pehchan lungi tumhari edit @ashuuu.writes_ 🔥🙌"</p>
@@ -840,7 +870,7 @@
           </div>
         </div>
 
-        <div class="comment-card">
+        <div class="comment-card reveal">
           <div>
             <div class="comment-stars">★★★★★</div>
             <p class="comment-text">"1 million likes @ashuuu.writes_ keep growing bhai ❤️"</p>
@@ -854,7 +884,7 @@
           </div>
         </div>
 
-        <div class="comment-card">
+        <div class="comment-card reveal">
           <div>
             <div class="comment-stars">★★★★★</div>
             <p class="comment-text">"Bhai best edit ever seen yrr hats off to your work bhai 🔥🔥🔥🔥🙌🙌"</p>
@@ -872,7 +902,7 @@
   </section>
 
   <!-- CONTACT CTA -->
-  <section>
+  <section class="reveal">
     <div class="container">
       <div class="contact-box">
         <h2>Ready to make your next reel go viral?</h2>
@@ -891,6 +921,28 @@
       <p>© 2026 <strong>Ashutosh Singh</strong> (@ashuuu.writes). All rights reserved.</p>
     </div>
   </footer>
+
+  <!-- ADVANCED SCROLL REVEAL SCRIPT -->
+  <script>
+    document.addEventListener("DOMContentLoaded", function() {
+      const reveals = document.querySelectorAll(".reveal");
+
+      function revealOnScroll() {
+        for (let i = 0; i < reveals.length; i++) {
+          let windowHeight = window.innerHeight;
+          let elementTop = reveals[i].getBoundingClientRect().top;
+          let elementVisible = 100;
+
+          if (elementTop < windowHeight - elementVisible) {
+            reveals[i].classList.add("active");
+          }
+        }
+      }
+
+      window.addEventListener("scroll", revealOnScroll);
+      revealOnScroll(); // Trigger on load
+    });
+  </script>
 
 </body>
 </html>

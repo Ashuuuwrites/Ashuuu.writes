@@ -109,12 +109,12 @@
 
     /* HERO SECTION */
     .hero {
-      min-height: 85vh;
+      min-height: 75vh;
       display: flex;
       align-items: center;
       position: relative;
       padding-top: 100px;
-      padding-bottom: 40px;
+      padding-bottom: 20px;
       overflow: hidden;
     }
 
@@ -217,9 +217,45 @@
       object-fit: cover;
     }
 
+    /* IPHONE-STYLE SHINING STATS BAR (Fills the blank space perfectly) */
+    .stats-bar {
+      padding: 30px 0;
+      position: relative;
+    }
+
+    .stats-box {
+      background: linear-gradient(135deg, rgba(255, 255, 255, 0.03), rgba(255, 51, 102, 0.05));
+      border: 1px solid rgba(255, 255, 255, 0.08);
+      border-radius: 20px;
+      padding: 24px;
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      text-align: center;
+      gap: 15px;
+      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+    }
+
+    .stat-item h3 {
+      font-size: clamp(22px, 3.5vw, 32px);
+      font-weight: 900;
+      background: linear-gradient(135deg, #fff, #ff6685, #38bdf8);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      margin-bottom: 4px;
+      text-shadow: 0 0 20px rgba(255, 51, 102, 0.4);
+    }
+
+    .stat-item p {
+      color: #a1a1aa;
+      font-size: 12.5px;
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+    }
+
     /* GLOWING BRAND LOGOS SECTION */
     .brands-section {
-      padding: 40px 0 60px;
+      padding: 35px 0 50px;
       border-bottom: 1px solid rgba(255, 255, 255, 0.06);
     }
 
@@ -229,7 +265,7 @@
       text-transform: uppercase;
       letter-spacing: 1.5px;
       color: #71717a;
-      margin-bottom: 28px;
+      margin-bottom: 24px;
       font-weight: 700;
     }
 
@@ -242,37 +278,23 @@
     }
 
     .brand-logo-img {
-      height: 44px;
+      height: 42px; /* Standardized height */
       object-fit: contain;
-      mix-blend-mode: screen; /* Removes black background cleanly */
+      mix-blend-mode: screen; 
       transition: 0.3s ease;
     }
 
-    /* Specific Colored Neon Glows for each brand */
-    .glow-netflix:hover {
-      filter: drop-shadow(0 0 14px rgba(229, 9, 20, 0.9));
-      transform: scale(1.08);
+    /* Zee Music specific size adjustment to balance with others */
+    .logo-zee {
+      height: 34px; 
     }
 
-    .glow-spotify:hover {
-      filter: drop-shadow(0 0 14px rgba(30, 215, 96, 0.9));
-      transform: scale(1.08);
-    }
-
-    .glow-tseries:hover {
-      filter: drop-shadow(0 0 14px rgba(255, 51, 51, 0.9));
-      transform: scale(1.08);
-    }
-
-    .glow-amazon:hover {
-      filter: drop-shadow(0 0 14px rgba(0, 168, 225, 0.9));
-      transform: scale(1.08);
-    }
-
-    .glow-zeemusic:hover {
-      filter: drop-shadow(0 0 14px rgba(255, 75, 75, 0.9));
-      transform: scale(1.08);
-    }
+    /* Colored Neon Glows */
+    .glow-netflix:hover { filter: drop-shadow(0 0 14px rgba(229, 9, 20, 0.9)); transform: scale(1.08); }
+    .glow-spotify:hover { filter: drop-shadow(0 0 14px rgba(30, 215, 96, 0.9)); transform: scale(1.08); }
+    .glow-tseries:hover { filter: drop-shadow(0 0 14px rgba(255, 51, 51, 0.9)); transform: scale(1.08); }
+    .glow-amazon:hover { filter: drop-shadow(0 0 14px rgba(0, 168, 225, 0.9)); transform: scale(1.08); }
+    .glow-zeemusic:hover { filter: drop-shadow(0 0 14px rgba(255, 75, 75, 0.9)); transform: scale(1.08); }
 
     .logo-influencers {
       color: #ff3366;
@@ -535,11 +557,19 @@
       .viral-thumb {
         height: 520px;
       }
+      .stats-box {
+        grid-template-columns: 1fr;
+        gap: 18px;
+        padding: 18px;
+      }
       .brands-grid {
         gap: 18px;
       }
       .brand-logo-img {
         height: 36px;
+      }
+      .logo-zee {
+        height: 30px;
       }
     }
   </style>
@@ -583,6 +613,26 @@
     </div>
   </header>
 
+  <!-- SHINING STATS BAR (Fills desktop blank space gracefully) -->
+  <div class="stats-bar">
+    <div class="container">
+      <div class="stats-box">
+        <div class="stat-item">
+          <h3>30M+</h3>
+          <p>Total Views</p>
+        </div>
+        <div class="stat-item">
+          <h3>5+ Years</h3>
+          <p>Experience</p>
+        </div>
+        <div class="stat-item">
+          <h3>1000+</h3>
+          <p>Projects Done</p>
+        </div>
+      </div>
+    </div>
+  </div>
+
   <!-- GLOWING BRAND LOGOS SECTION (Sequence: Netflix -> Spotify -> T-Series -> Amazon -> Zee Music -> Influencers) -->
   <div class="brands-section">
     <div class="container">
@@ -592,7 +642,7 @@
         <img src="spotify.jpg" alt="Spotify" class="brand-logo-img glow-spotify">
         <img src="tseries.jpg" alt="T-Series" class="brand-logo-img glow-tseries">
         <img src="amazon.jpg" alt="Amazon Prime" class="brand-logo-img glow-amazon">
-        <img src="zeemusic.jpg" alt="Zee Music" class="brand-logo-img glow-zeemusic">
+        <img src="zeemusic.jpg" alt="Zee Music" class="brand-logo-img logo-zee glow-zeemusic">
         <div class="logo-influencers">⚡ Top Instagram Influencers</div>
       </div>
     </div>
